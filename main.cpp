@@ -25,17 +25,17 @@ void enQueue(int nextValue, Node **header){ // Integer to add to list, node poin
         }
         current->next = newNode;// Puts node all the way in the back
     }
+
+    
 }
 
-void deQueue(Node **header){
-    if(header == nullptr){ // If header doesn't exist
-        return;
-    }
-
+Node deQueue(Node **header){
     Node *tempNum = *header; // New temporary header
     *header = tempNum->next; // Removes the number from list
     
     delete tempNum; // Deletes the temporary number
+    
+    return **header;
 }
 
 void printQueue(Node *header) { // Function to print items, input header node
@@ -55,6 +55,14 @@ int main(){
 
     enQueue(2, &head);
     printQueue(head);
+    
+    enQueue(6, &head);
+    enQueue(1, &head);
+    enQueue(5, &head);
+    enQueue(1, &head);
+    enQueue(6, &head);
+    enQueue(7, &head);
+    enQueue(8, &head);
 
     deQueue(&head);
     printQueue(head);
